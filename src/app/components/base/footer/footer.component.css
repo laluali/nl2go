@@ -4,6 +4,6 @@
   color: ghostwhite;
   background-color: cadetblue;
   bottom: 0;
-  position: relative;
+  position: fixed;
   width: 100%;
 }

@@ -1,0 +1,42 @@
+@import "../styles.css";
+
+
+html,body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+.page{
+  min-height: 100%;
+}
+
+.btn-group-stick button{
+  border: 1px solid grey;
+  outline: unset;
+}
+
+.btn-group-stick:first-child button{
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.btn-group-stick:last-child button{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid grey;
+  outline: unset;
+}
+
+.mar-10{
+  margin: 10px;
+}
+
+.btn-round{
+  border: 1px solid darkgrey;
+  border-radius: 5px;
+}
+
+.btn-30-60{
+  height: 30px;
+  width: 60px;
+}

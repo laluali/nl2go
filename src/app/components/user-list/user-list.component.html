@@ -1,0 +1,6 @@
+<div class="container">
+  <nl-arch-table [tableHeader]="'User List'" (selectedRow)="onRowSelect($event);" (unSelectedRow)="onRowUnselect($event);" [refreshTable]="refreshTable"
+                 [columnData]="columnData" (buttonClick)="onButtonClick($event);" [disabled]="!tBtnDisabled"
+                 (multipleDeleteClick)="multipleDelete($event);" [selectedList]="selectedRow"></nl-arch-table>
+</div>
+<nl-arch-modal [dialogId]="'UserDetailComponent'" [title]="'User Detail'"></nl-arch-modal>

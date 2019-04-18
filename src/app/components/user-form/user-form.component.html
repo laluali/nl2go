@@ -1,0 +1,12 @@
+<div class="text-center">
+  <form [formGroup]="userEditForm">
+    <nl-arch-text-box [form]="userEditForm" [controlName]="'firstName'"  [label]="'First Name : '"></nl-arch-text-box>
+    <nl-arch-text-box [form]="userEditForm" [controlName]="'lastName'" [label]="'Last Name : '"></nl-arch-text-box>
+  </form>
+
+  <div class="btn-group-stick">
+    <nl-arch-button [buttonStyle]="'btn-round mar-10 btn-primary btn-30-60'" [label]="'Save'" (buttonClick)="onSave($event);"></nl-arch-button>
+    <nl-arch-button [buttonStyle]="'btn-round mar-10 btn-default btn-30-60'" [label]="'Cancel'" (buttonClick)="onCancel($event);"></nl-arch-button>
+  </div>
+</div>
+<nl-arch-modal [hideFooter]="true" [dialogId]="'UserAlertComponent'" [title]="'Alert'"></nl-arch-modal>

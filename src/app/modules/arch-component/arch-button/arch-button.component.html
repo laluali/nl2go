@@ -1,0 +1,3 @@
+<button type="button" [disabled]="disabled" [class]="buttonStyle" (click)="onButtonClick(buttonData);" [innerHTML]="label" [title]="label">
+  <span *ngIf="content" [class]="content"></span>
+</button>

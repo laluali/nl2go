@@ -1,0 +1,9 @@
+.footer{
+  min-height: 20px;
+  padding: 2px;
+  color: ghostwhite;
+  background-color: cadetblue;
+  bottom: 0;
+  position: relative;
+  width: 100%;
+}

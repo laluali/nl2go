@@ -1,0 +1,20 @@
+<span *ngIf="isHeaderColumnRow">
+  <tr>
+    <th *ngIf="isSelectable">
+      <span style="font-size:16px">&#x2713;</span>
+    </th>
+    <th *ngFor="let column of dataList">
+      {{ column }}
+    </th>
+  </tr>
+</span>
+<span *ngIf="isDataColumnRow">
+  <tr *ngFor="let data of dataList; let i = index">
+    <td *ngIf="isSelectable">
+      <nl-arch-check-box (checkBoxChange)="onRowSelect($event)" [checkBoxData]="data"></nl-arch-check-box>
+    </td>
+    <td>
+      {{ data.firstName }}
+    </td>
+  </tr>
+</span>

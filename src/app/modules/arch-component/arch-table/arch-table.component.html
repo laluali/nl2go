@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div *ngIf="tableHeader" class="panel-heading">
+    <div class="flex-container">
+      <h3>{{tableHeader}}</h3>
+      <p class="mar-t-18">
+        {{selectedList.length}}
+        <span *ngIf="selectedList.length <= 1"> item Selected</span>
+        <span *ngIf="selectedList.length > 1"> items Selected</span>
+      </p>
+      <div class="header-btn-group mar-t-10">
+        <nl-arch-button [disabled]="disabled" [buttonStyle]="'btn btn-primary btn-danger'" (buttonClick)="onMultipleDelete($event)" [label]="'Delete'"></nl-arch-button>
+        <nl-arch-button [disabled]="disabled" [buttonStyle]="'btn btn-primary btn-default'" (buttonClick)="downloadExcel();" [label]="'Export'"></nl-arch-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columnData">
+          <ng-container *ngIf="column.type == 'checkbox';then checkbox else label">
+          </ng-container>
+          <ng-template #checkbox>
+              <label [style]="'font-size:'+ column.size +''" [innerHTML]="column.content"></label>
+          </ng-template>
+          <ng-template #label>
+            <label [innerHTML]="column.label"></label>
+          </ng-template>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of pageableArray; let i = index">
+        <td *ngFor="let column of columnData">
+          <div [ngStyle]="{'max-width': (column.width)?column.width:''+''}">
+             <ng-container *ngIf="column.type == 'checkbox';then checkbox else label">
+            </ng-container>
+            <ng-template #checkbox>
+              <nl-arch-check-box *ngIf="column.type == 'checkbox'" (checkBoxSelect)="onRowSelect($event)"
+                                 (checkBoxUnSelect)="onRowUnSelect($event);" [objectArray]="selectedList" [checkBoxData]="row"
+              ></nl-arch-check-box>
+            </ng-template>
+            <ng-template #label>
+              <ng-container *ngIf="column.type == 'label'; else button">
+              </ng-container>
+              <p class="cell-title" *ngIf="column.type == 'textbox'" [innerHTML]="row[column.id]" [title]="row[column.id]"></p>
+            </ng-template>
+            <ng-template #button>
+                <nl-arch-button *ngIf="column.type == 'button'" (buttonClick)="onButtonClick($event, column.alias)"
+                                [label]="column.label" [buttonStyle]="column.buttonStyle" [content]="column.content ? column.content : null"
+                                [title]="column.label" [buttonData]="row"></nl-arch-button>
+            </ng-template>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="right">
+    <nl-arch-pagination (pagedEvent)="pagedArray($event);" [allItems]="rowData"></nl-arch-pagination>
+  </div>
+</div>

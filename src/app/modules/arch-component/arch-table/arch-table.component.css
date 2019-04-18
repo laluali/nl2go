@@ -1,0 +1,35 @@
+@import '../../../app.component.css';
+
+.cell-title{
+  max-width: fit-content;
+  text-overflow: ellipsis;
+  text-wrap: none;
+  overflow-wrap: unset;
+}
+
+.flex-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mar-t-10{
+  margin-top: 10px;
+}
+
+.mar-t-15{
+  margin-top: 15px;
+}
+
+.mar-t-18{
+  margin-top: 18px;
+}
+
+.mar-b-10{
+  margin-bottom: 10px;
+}
+
+.header-btn-group{
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 10px;
+}

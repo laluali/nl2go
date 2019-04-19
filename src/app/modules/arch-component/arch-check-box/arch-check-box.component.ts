@@ -11,9 +11,11 @@ export class ArchCheckBoxComponent implements OnInit, DoCheck {
   constructor(private ref: ChangeDetectorRef) { }
 
   @Input() checkBoxData: any;
+  // will delegate checkbox check event
   @Output() checkBoxSelect: EventEmitter<any> = new EventEmitter<any>();
+  // will delegate checkbox uncheck event
   @Output() checkBoxUnSelect: EventEmitter<any> = new EventEmitter<any>();
-  @Output() validateCheck: EventEmitter<any> = new EventEmitter<any>();
+
   check = false;
   @Input() objectArray: any[];
 

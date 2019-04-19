@@ -7,6 +7,7 @@ import {ArchModalService} from '../../modules/arch-component/arch-modal/arch-mod
 import {isArray} from 'util';
 import {of} from 'rxjs/internal/observable/of';
 import {User} from '../../model/user';
+import {EventData} from '../../model/event-data';
 
 @Component({
   selector: 'nl-user-list',
@@ -49,7 +50,7 @@ export class UserListComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   showUserDetailModal(event: any) {
-    let eventData: any = {};
+    const eventData: any = new EventData();
     eventData.componentName = 'UserDetailComponent';
     eventData.input = 'feedValues';
     eventData.dynamicData = event;
@@ -98,7 +99,6 @@ export class UserListComponent implements OnInit, OnDestroy, DoCheck {
 
   onRowUnselect(data: any): void {
     this.selectedRow = this.selectedRow.filter(row => row.id != data.id);
-    console.log(this.selectedRow);
   }
 
   multipleDelete(event: any): void {

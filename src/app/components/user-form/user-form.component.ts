@@ -6,6 +6,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ArchModalService} from '../../modules/arch-component/arch-modal/arch-modal.service';
 import {UserAlertService} from '../user-alert/user-alert.service';
 import {User} from '../../model/user';
+import {EventData} from '../../model/event-data';
 
 @Component({
   selector: 'nl-user-form',
@@ -75,7 +76,7 @@ export class UserFormComponent implements OnInit, OnDestroy, OnChanges {
   onCancel(event: any): void {
     if (this.userEditForm.valid) {
       if (this.userEditForm.dirty) {
-        let eventData: any = {};
+        const eventData: EventData = new EventData();
         eventData.componentName = 'UserAlertComponent';
         eventData.input = 'feedValues';
         eventData.dynamicData = isNullOrUndefined(event) ? '' : event;

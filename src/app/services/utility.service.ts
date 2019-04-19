@@ -11,8 +11,10 @@ export class UtilityService {
 
   constructor(private router: Router) { }
 
+  // Handle page load spinner
   @Output() loaderEvent: EventEmitter<any> = new EventEmitter<boolean>();
 
+  // get component instance
   getDynamicComponentInstance(container: ViewContainerRef, componentName: any, resolver: ComponentFactoryResolver, eventData: any) {
     container.clear();
     const factory: any =  resolver.resolveComponentFactory(componentName);
@@ -25,6 +27,7 @@ export class UtilityService {
     this.router.navigate(['user/', pathParam]);
   }
 
+  // return component by component name
   getComponentInstance(componentName: string) {
     switch (componentName) {
       case 'UserDetailComponent':
@@ -36,11 +39,13 @@ export class UtilityService {
     }
   }
 
+  // get difference in years
   getDiffInYears(date: string) {
       var birthday = +new Date(date);
       return~~ Math.ceil(((Date.now() - birthday) / (31557600000)));
   }
 
+  // download content as CSV
   downloadArrayAsCSV(items: any[]) {
     let csv = '';
     /*let items = this.selectedRow;*/

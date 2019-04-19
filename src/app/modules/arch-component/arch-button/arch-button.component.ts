@@ -9,6 +9,7 @@ export class ArchButtonComponent implements OnInit, OnChanges {
 
   constructor() { }
 
+  // will serve as delegate for button click
   @Output() buttonClick: any = new EventEmitter<any>();
   @Input() label: string;
   @Input() buttonData: any;

@@ -14,7 +14,6 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.feedValues.dynamicData;
-    console.log(this.user);
   }
 
 }

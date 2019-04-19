@@ -17,9 +17,13 @@ export class ArchTableComponent implements OnInit, OnDestroy, OnChanges {
   @Input() refreshTable: boolean;
   @Input() disabled: boolean;
   @Input() selectedList: any[];
+  // wil serve as delegate for current selected row
   @Output() selectedRow: any = new EventEmitter<any>();
+  // will serve as delegate for current unselected row
   @Output() unSelectedRow: any = new EventEmitter<any>();
+  // will serve as delegate for buttons click event
   @Output() buttonClick: any = new EventEmitter<any>();
+  // will serve as delegate for table header delete click
   @Output() multipleDeleteClick: any = new EventEmitter<any>();
 
   rowData: any;
@@ -40,6 +44,7 @@ export class ArchTableComponent implements OnInit, OnDestroy, OnChanges {
     this.buttonClick.emit(event);
   }
 
+  /*This method will add rows to be shown on a page*/
   pagedArray(event: any): any {
     this.pageableArray = event;
     this.ref.detectChanges();

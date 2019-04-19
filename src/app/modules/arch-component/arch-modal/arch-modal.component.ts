@@ -4,6 +4,7 @@ import {UtilityService} from '../../../services/utility.service';
 import {$} from 'protractor';
 import {distinctUntilChanged} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
+import {EventData} from '../../../model/event-data';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class ArchModalComponent implements OnInit, OnDestroy {
               private util: UtilityService,
               private resolver: ComponentFactoryResolver) { }
 
+  // will serve as pathfinder for current dynamic component
   @ViewChildren('dynamicComponent', {read: ViewContainerRef}) container;
   @Input() dialogId: string;
   @Input() title: string;
@@ -26,13 +28,14 @@ export class ArchModalComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    // subscribing dialog open event
     this.openSubscription = this.dialogBoxService.openDialog
       .subscribe(
       eventData => {
         this.callComponent(eventData);
       },
       error => {});
-
+    // subscribing dialog close event
     this.dialogBoxService.closeDialog
       .subscribe(
       eventData => {
@@ -41,7 +44,7 @@ export class ArchModalComponent implements OnInit, OnDestroy {
       error => {});
   }
 
-  callComponent(eventData: any) {
+  callComponent(eventData: EventData) {
     if (!this.container) {
       setTimeout(() => {
         this.callCompLogic(eventData);
@@ -51,18 +54,17 @@ export class ArchModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  callCompLogic(eventData: any) {
+  callCompLogic(eventData: EventData) {
     this.container.forEach(get_results =>  {
-      let parent = get_results.parentInjector;
-      if (parent.view.component.dialogId === eventData.componentName) {
-        this.title = this.title;
+      let parent = get_results.parentInjector; // extract parent DOM
+      if (parent.view.component.dialogId === eventData.componentName) { // extract current component
         document.getElementById(eventData.componentName).click();
         this.util.getDynamicComponentInstance(get_results, this.util.getComponentInstance(eventData.componentName), this.resolver, eventData);
       }
     });
   }
 
-  hideCompLogic(componentName: any){
+  hideCompLogic(componentName: any) {
     this.container.forEach(get_results =>  {
       let parent = get_results.parentInjector;
       if (parent.view.component.dialogId === componentName) {

@@ -7,7 +7,8 @@ import {EventData} from '../../../model/event-data';
 export class ArchModalService {
 
   constructor() { }
-
+  /* Dialog open service*/
   @Output() openDialog: EventEmitter<EventData> = new EventEmitter(false);
+  /* Dialog close service*/
   @Output() closeDialog: EventEmitter<EventData> = new EventEmitter(false);
 }

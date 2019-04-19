@@ -1,4 +1,10 @@
 <div class="page">
+  <div *ngIf="showLoader" class="parent-loader">
+    <div class="gray-scale">
+      <div class="fa fa-spinner fa-spin gibs-spin"></div>
+    </div>
+  </div>
+
   <nl-header></nl-header>
   <nl-body></nl-body>
   <nl-footer></nl-footer>

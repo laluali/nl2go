@@ -5,6 +5,7 @@ import {RequestCache} from '../../services/http.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ArchModalService} from '../../modules/arch-component/arch-modal/arch-modal.service';
 import {UserAlertService} from '../user-alert/user-alert.service';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'nl-user-form',
@@ -20,9 +21,9 @@ export class UserFormComponent implements OnInit, OnDestroy, OnChanges {
               private modalService: ArchModalService,
               private userAlertService: UserAlertService) { }
 
-  user: any = {};
+  user: User;
   userEditForm: FormGroup;
-  isSaved: boolean;
+
   ngOnInit() {
 
     this.userEditForm = new FormGroup({
@@ -70,6 +71,7 @@ export class UserFormComponent implements OnInit, OnDestroy, OnChanges {
   navigateToUserPage(): void {
     this.router.navigate(['users']);
   }
+
   onCancel(event: any): void {
     if (this.userEditForm.valid) {
       if (this.userEditForm.dirty) {

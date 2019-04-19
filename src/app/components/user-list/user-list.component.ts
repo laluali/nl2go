@@ -6,6 +6,7 @@ import {UtilityService} from '../../services/utility.service';
 import {ArchModalService} from '../../modules/arch-component/arch-modal/arch-modal.service';
 import {isArray} from 'util';
 import {of} from 'rxjs/internal/observable/of';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'nl-user-list',
@@ -24,7 +25,7 @@ export class UserListComponent implements OnInit, OnDestroy, DoCheck {
   filteredList: any;
   columnData: any;
   refreshTable = false;
-  selectedRow: any = [];
+  selectedRow: User[] = [];
   tBtnDisabled = false;
 
   ngOnInit() {
@@ -60,7 +61,7 @@ export class UserListComponent implements OnInit, OnDestroy, DoCheck {
     this.cacheHelper.cache.forEach(val => responseData = val.response.body);
     this.filteredList = [];
     if (isArray(users)) {
-      users.forEach(user => {
+      users.forEach((user: User) => {
         responseData = responseData.filter(entry => entry.id != user.id);
         this.updateCache(responseData);
       });

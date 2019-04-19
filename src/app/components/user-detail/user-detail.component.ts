@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'nl-user-detail',
@@ -9,7 +10,8 @@ export class UserDetailComponent implements OnInit {
 
   constructor() { }
   @Input() feedValues: any = {};
-  user: any;
+  user: User;
+
   ngOnInit() {
     this.user = this.feedValues.dynamicData;
     console.log(this.user);

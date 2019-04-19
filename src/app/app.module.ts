@@ -20,6 +20,7 @@ import { HeaderComponent } from './components/base/header/header.component';
 import { FooterComponent } from './components/base/footer/footer.component';
 import { BodyComponent } from './components/base/body/body.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

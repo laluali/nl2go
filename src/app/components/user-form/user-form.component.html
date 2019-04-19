@@ -1,9 +1,11 @@
 <div class="text-center">
+  <!--User Form Section-->
   <form [formGroup]="userEditForm">
     <nl-arch-text-box [form]="userEditForm" [controlName]="'firstName'"  [label]="'First Name : '"></nl-arch-text-box>
     <nl-arch-text-box [form]="userEditForm" [controlName]="'lastName'" [label]="'Last Name : '"></nl-arch-text-box>
   </form>
 
+  <!--User Buttons-->
   <div class="btn-group-stick">
     <nl-arch-button [buttonStyle]="'btn-round mar-10 btn-primary btn-30-60'" [label]="'Save'" (buttonClick)="onSave($event);"></nl-arch-button>
     <nl-arch-button [buttonStyle]="'btn-round mar-10 btn-default btn-30-60'" [label]="'Cancel'" (buttonClick)="onCancel($event);"></nl-arch-button>

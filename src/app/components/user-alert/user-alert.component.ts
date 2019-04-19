@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserAlertService} from './user-alert.service';
 import {ArchModalService} from '../../modules/arch-component/arch-modal/arch-modal.service';
-import {isNullOrUndefined} from "util";
+import {isNullOrUndefined} from 'util';
+import {EventData} from '../../model/event-data';
 
 @Component({
   selector: 'nl-user-alert',
@@ -27,7 +28,7 @@ export class UserAlertComponent implements OnInit {
   }
 
   hideAlert(): void {
-    let eventData: any = {};
+    const eventData: EventData = new EventData();
     eventData.componentName = 'UserAlertComponent';
     eventData.input = 'feedValues';
     eventData.dynamicData = isNullOrUndefined(event) ? '' : event;

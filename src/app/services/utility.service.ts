@@ -1,10 +1,8 @@
-import {ComponentFactoryResolver, Injectable, ViewContainerRef} from '@angular/core';
+import {ComponentFactoryResolver, EventEmitter, Injectable, Output, ViewContainerRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserDetailComponent} from '../components/user-detail/user-detail.component';
 import {isNullOrUndefined} from 'util';
-import {$} from 'protractor';
 import {UserAlertComponent} from '../components/user-alert/user-alert.component';
-import {generate} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +10,8 @@ import {generate} from 'rxjs';
 export class UtilityService {
 
   constructor(private router: Router) { }
+
+  @Output() loaderEvent: EventEmitter<any> = new EventEmitter<boolean>();
 
   getDynamicComponentInstance(container: ViewContainerRef, componentName: any, resolver: ComponentFactoryResolver, eventData: any) {
     container.clear();
@@ -72,8 +72,6 @@ export class UtilityService {
     link.setAttribute('download', 'user.csv');
     document.body.appendChild(link);
     document.getElementById('download-csv').click();
-
-
   }
 
 }

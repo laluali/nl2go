@@ -1,0 +1,13 @@
+.nl-text{
+  outline: unset;
+  padding: 2px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.nl-text-label{
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

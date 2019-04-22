@@ -1,4 +1,4 @@
 <div [formGroup]="form">
-  <label [innerHTML]="label"></label>
-  <input type="text" [value]="" formControlName="{{controlName}}"/>
+  <label class="nl-text-label" [innerHTML]="label| titlecase"></label>
+  <input class="nl-text" type="text" [value]="" formControlName="{{controlName}}"/>
 </div>
